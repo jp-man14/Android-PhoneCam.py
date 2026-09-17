@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneCam</string>
+    <string name="status_not_streaming">Not streaming</string>
+    <string name="clients_zero">0 clients</string>
+    <string name="label_zoom">Zoom:</string>
+    <string name="zoom_default">1.0x</string>
+    <string name="label_port">Port:</string>
+    <string name="default_port">8080</string>
+    <string name="label_torch">Torch</string>
+    <string name="btn_flip">Flip</string>
+    <string name="btn_start_streaming">Start Streaming</string>
+    <string name="btn_stop_streaming">Stop Streaming</string>
+    <string name="status_stopped">Stopped</string>
+    <string name="wifi_off">WiFi: —</string>
+</resources>

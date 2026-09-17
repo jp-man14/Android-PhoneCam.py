@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <!-- Camera preview -->
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/controlPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Live FPS badge overlaid on preview, top-right -->
+    <TextView
+        android:id="@+id/fpsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/accent_green"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:background="@color/fps_badge_background"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="3dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp" />
+
+    <!-- Control panel -->
+    <LinearLayout
+        android:id="@+id/controlPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/panel_background"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Status row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="7dp">
+
+            <View
+                android:id="@+id/statusDot"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:background="@drawable/dot_gray"
+                android:layout_marginEnd="7dp" />
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/status_not_streaming"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:singleLine="true"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/clientCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clients_zero"
+                android:textColor="@color/text_faint"
+                android:textSize="11sp"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- Quality spinner (full width — labels are long for 4K) -->
+        <Spinner
+            android:id="@+id/qualitySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/input_bg"
+            android:layout_marginBottom="7dp" />
+
+        <!-- Zoom slider row (0.5x ultrawide -> 4x) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_zoom"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:layout_marginEnd="6dp" />
+
+            <SeekBar
+                android:id="@+id/zoomSeek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/zoomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zoom_default"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:layout_marginStart="6dp"
+                android:minWidth="36dp" />
+        </LinearLayout>
+
+        <!-- Port + flash row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_port"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:layout_marginEnd="6dp" />
+
+            <EditText
+                android:id="@+id/portInput"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:text="@string/default_port"
+                android:inputType="number"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:background="@drawable/input_bg"
+                android:paddingHorizontal="8dp"
+                android:fontFamily="monospace" />
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/flashCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_torch"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:buttonTint="@color/checkbox_tint" />
+        </LinearLayout>
+
+        <!-- Flip + Stream buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <Button
+                android:id="@+id/switchCameraBtn"
+                android:layout_width="72dp"
+                android:layout_height="40dp"
+                android:text="@string/btn_flip"
+                android:textSize="12sp"
+                android:backgroundTint="@color/button_flip_background"
+                android:textColor="@color/text_secondary"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/streamBtn"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/btn_start_streaming"
+                android:textSize="14sp"
+                android:backgroundTint="@color/button_stream_background"
+                android:textColor="@color/button_text" />
+        </LinearLayout>
+
+        <!-- WiFi address (same port; use with host flag on the PC, no ADB needed) -->
+        <TextView
+            android:id="@+id/wifiInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_off"
+            android:textColor="@color/text_faint"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

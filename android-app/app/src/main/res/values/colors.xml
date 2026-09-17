@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_background">#0A0A0A</color>
+    <color name="panel_background">#1A1A2E</color>
+    <color name="text_primary">#CCCCDD</color>
+    <color name="text_secondary">#AAAACC</color>
+    <color name="text_muted">#888899</color>
+    <color name="text_faint">#6666AA</color>
+    <color name="accent_green">#44EE77</color>
+    <color name="fps_badge_background">#99000000</color>
+    <color name="button_flip_background">#2A2A4A</color>
+    <color name="button_stream_background">#3344AA</color>
+    <color name="button_stop_background">#AA3333</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="checkbox_tint">#5566CC</color>
+</resources>
